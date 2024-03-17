@@ -1,20 +1,52 @@
-# proshore-assignment
-FILE STRUCTURE
-#This follows laravel folder structure.
--application-file: same as laravel folder structure. Hit all the commands(except git) inside this folder.This folder is segregratted if in case we need to add other files or folders that is independent of this system folder like frontend, api, docker files, etc
+# Proshore Assignment Readme
+# Author: Rabi Gorkhali
 
-HOW TO SETUP
-STEP1
+## File Structure
+
+This project follows the Laravel folder structure. Here's a breakdown of the main directories:
+
+- **application-file:** This directory mirrors the Laravel folder structure. You should execute all commands related to the application (except Git commands) within this folder.
+
+This structure is designed to segregate different components of the system, such as front-end, API, Docker files, etc., if they are added in the future.
+
+## HOW TO SETUP
+# STEP1
 - clone repo from https://github.com/rabigorkhali/proshore-assignment.git
 
-STEP2
-##ENV SETUP
+# STEP2
 -make .env file. copy it from .env.example and make necessary changes like (app_url, database configs,etc)
 -for email to work please put valid mail config
 
-STEP2
+# STEP3
 Hit following command at --- cd application-files/
  `composer install`
  `php artisan key:generate`
  `php artisan migrate`
  `php artisan db:seed`
+ `npm install` 
+ `npm run dev`<!-- hit this command if css breaks, however compilled css and js files are already pushed -->
+
+## STEP 4
+Now run the application via serve or by going to project url (localhost/proshore-assignment/public)
+`php artisan serve`
+
+## Login Information
+ -Default user credentials:
+ -email:examadmin@proshore.com 
+  password:123admin@
+
+## SOME MORE INFO 
+  <p>Place the hooks folder content inside folder .git/hooks (unix platform commands is given below)</p>
+ ```
+        cp ./hooks/* ./.git/hooks 
+        // Making sure the file is executable
+        sudo chmod +x ./.git/hooks/pre-commit
+ ```
+ <p>Use bellow command to check if any minor fixes need to be done </p>
+  ```
+       composer sniff
+ ```
+ <p>Use bellow command to fix the problems </p>
+  ```
+       composer lint
+ ```
