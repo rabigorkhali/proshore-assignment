@@ -31,9 +31,15 @@
                     title="Questions">
                     <em class="fa fa-eye"></em> Questions
                 </button>
+                <button type="button" class="btn btn-primary btn-sm mb-1" data-bs-toggle="modal"
+                    data-bs-target="#sendEmailToStudent{{ $item->id }}" data-toggle="tooltip" data-placement="top"
+                    title="Questions">
+                    <em class="fa fa-envelope"></em> Send Email To Student
+                </button>
             </td>
         </tr>
         @include('system.questionnaire.questionListModal')
+        @include('system.questionnaire.sendEmailToStudentModal')
     @endforeach
 @endsection
 
