@@ -37,15 +37,6 @@ class Service
         return $this->repository->editPageData($request, $id);
     }
 
-
-    public function status()
-    {
-        return [
-            ['value' => 1, 'label' => 'Active'],
-            ['value' => 0, 'label' => 'Inactive'],
-        ];
-    }
-
     public function store($request)
     {
         $data = $request->except('_token');

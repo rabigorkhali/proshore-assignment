@@ -4,6 +4,8 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Throwable;
+use DB;
 
 class ResourceController extends Controller
 {
@@ -193,7 +195,6 @@ class ResourceController extends Controller
     {
         $data['indexUrl'] = $this->getUrl();
         $data['title'] = $this->getModuleName();
-
         return view($this->viewFolder() . '.' . $viewFile, $data)->render();
     }
 
@@ -230,16 +231,22 @@ class ResourceController extends Controller
      */
     public function store()
     {
-        if (!empty($this->storeValidationRequest())) {
-            $request = $this->storeValidationRequest();
-        } else {
-            $request = $this->defaultRequest();
+        try {
+            DB::beginTransaction();
+            if (!empty($this->storeValidationRequest())) {
+                $request = $this->storeValidationRequest();
+            } else {
+                $request = $this->defaultRequest();
+            }
+            $request = app()->make($request);
+            $this->service->store($request);
+            $this->setModuleId($request->id);
+            DB::commit();
+            return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
+        } catch (Throwable $throwableCatch) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['alert-danger' => 'Something went wrong.']);
         }
-        $request = app()->make($request);
-        $this->service->store($request);
-        $this->setModuleId($request->id);
-
-        return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
     }
 
     /**
@@ -248,13 +255,19 @@ class ResourceController extends Controller
      */
     public function edit($id)
     {
-        $request = $this->defaultRequest();
-        $request = app()->make($request);
-        $data = $this->service->editPageData($request, $id);
-        $this->setModuleId($id);
-        $data['breadcrumbs'] = $this->breadcrumbForForm('Edit');
-
-        return $this->renderView('form', $data);
+        try {
+            $request = $this->defaultRequest();
+            $request = app()->make($request);
+            DB::beginTransaction();
+            $data = $this->service->editPageData($request, $id);
+            $this->setModuleId($id);
+            $data['breadcrumbs'] = $this->breadcrumbForForm('Edit');
+            DB::commit();
+            return $this->renderView('form', $data);
+        } catch (Throwable $throwableCatch) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['alert-danger' => 'Something went wrong.']);
+        }
     }
 
     /**
@@ -263,18 +276,24 @@ class ResourceController extends Controller
      */
     public function update($id)
     {
-        if (!empty($this->updateValidationRequest())) {
-            $request = $this->updateValidationRequest();
-        } elseif (!empty($this->storeValidationRequest())) {
-            $request = $this->storeValidationRequest();
-        } else {
-            $request = $this->defaultRequest();
+        try {
+            if (!empty($this->updateValidationRequest())) {
+                $request = $this->updateValidationRequest();
+            } elseif (!empty($this->storeValidationRequest())) {
+                $request = $this->storeValidationRequest();
+            } else {
+                $request = $this->defaultRequest();
+            }
+            $request = app()->make($request);
+            DB::beginTransaction();
+            $this->service->update($request, $id);
+            $this->setModuleId($id);
+            DB::commit();
+            return redirect($this->getUrl())->withErrors(['success' => 'Successfully updated.']);
+        } catch (Throwable $throwableCatch) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['alert-danger' => 'Something went wrong.']);
         }
-        $request = app()->make($request);
-        $this->service->update($request, $id);
-        $this->setModuleId($id);
-
-        return redirect($this->getUrl())->withErrors(['success' => 'Successfully updated.']);
     }
 
     /**
@@ -283,16 +302,15 @@ class ResourceController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $this->service->delete($request, $id);
-        $this->setModuleId($id);
-        return redirect($this->getUrl())->withErrors(['success' => 'Successfully deleted.']);
-    }
-
-    public function changeStatus(Request $request,$id)
-    {
-        $item = $this->service->itemByIdentifier($id);
-        $item->status = !$item->status;
-        $item->save();
-        return redirect()->back()->withErrors(['success' => 'Status Changed']);
+        try {
+            DB::beginTransaction();
+            $this->service->delete($request, $id);
+            $this->setModuleId($id);
+            DB::commit();
+            return redirect($this->getUrl())->withErrors(['success' => 'Successfully deleted.']);
+        } catch (Throwable $throwableCatch) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['alert-danger' => 'Something went wrong.']);
+        }
     }
 }

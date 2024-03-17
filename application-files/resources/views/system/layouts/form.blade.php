@@ -63,7 +63,7 @@
 
                                                     <button type="submit" class="btn btn-primary">
                                                         <i class="{{ $submitButtonIcon }}" aria-hidden="true"></i>
-                                                        {{ $submitButtonLabel }}
+                                                        {{ $submitButtonLabelCustom??$submitButtonLabel }}
                                                     </button>
 
                                                     <a href="{{ url($cancelButtonUrl) }}" class="btn btn-secondary">

@@ -49,3 +49,8 @@ function getSystemPrefix()
 {
     return config('constants.PREFIX');
 }
+
+function listFormatting($optionKey)
+{
+    return $optionKey . ') ';
+}

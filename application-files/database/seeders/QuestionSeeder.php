@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Model\Question;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class QuestionSeeder extends Seeder
 {
@@ -292,6 +292,6 @@ class QuestionSeeder extends Seeder
         $questions = array_merge($physicsQuestions, $chemistryQuestions);
 
         // Bulk insert all questions
-        DB::table('questions')->insert($questions);
+        Question::insert($questions);
     }
 }

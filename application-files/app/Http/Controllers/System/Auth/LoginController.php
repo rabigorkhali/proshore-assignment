@@ -88,7 +88,6 @@ class LoginController extends Controller
             if (authUser() != null) {
                 $this->guard()->logout();
             }
-            dd($e->getMessage());
             throw new CustomGenericException('Internal server error.');
         }
     }
