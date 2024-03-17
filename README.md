@@ -18,23 +18,25 @@ This structure is designed to segregate different components of the system, such
 -for email to work please put valid mail config
 
 # STEP3
+
 Hit following command at --- cd application-files/
-```bash
- `composer install`
- `php artisan key:generate`
- `php artisan migrate`
- `php artisan db:seed`
- `npm install` 
- `npm run dev`<!-- hit this command if css breaks, however compilled css and js files are already pushed -->
-</p>
+ ```
+    `composer install`
+    `php artisan key:generate`
+    `php artisan migrate`
+    `php artisan db:seed`
+    `npm install` 
+    `npm run dev`<!-- hit this command if css breaks, however compilled css and js files are already pushed -->
+ ```
+
 ## STEP 4
 Now run the application via serve or by going to project url (localhost/proshore-assignment/public)
 `php artisan serve`
 
 ## Login Information
- -Default user credentials:
- -email:examadmin@proshore.com 
-  password:123admin@
+<p>-Default user credentials:</p>
+<p>-email:examadmin@proshore.com </p>
+<p>password:123admin@</p>
 
 ## SOME MORE INFO 
   <p>Place the hooks folder content inside folder .git/hooks (unix platform commands is given below)</p>
