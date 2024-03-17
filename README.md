@@ -30,13 +30,13 @@ Hit following command at --- cd application-files/
  ```
 
 ## STEP 4
-Now run the application via serve or by going to project url (localhost/proshore-assignment/public)
+Now run the application via serve or by going to project url (localhost/proshore-assignment/public)<br>
 `php artisan serve`
 
 ## Login Information
-<p>-Default user credentials:</p>
-<p>-email:examadmin@proshore.com </p>
-<p>password:123admin@</p>
+<p>--Default user credentials:--</p>
+<p>email:examadmin@proshore.com <br>
+password:123admin@</p>
 
 ## SOME MORE INFO 
   <p>Place the hooks folder content inside folder .git/hooks (unix platform commands is given below)</p>
