@@ -89,7 +89,6 @@
 
     <!-- footer start-->
     @include('system.layouts.layoutFooter')
-    @include('system.layouts.editorScript')
     @yield('scripts')
 </div>
 </body>
