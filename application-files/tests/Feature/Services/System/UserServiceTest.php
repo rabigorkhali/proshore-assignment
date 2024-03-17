@@ -26,7 +26,7 @@ class UserServiceTest extends TestCase
     }
 
     /** @test */
-    public function it_can_return_index_page_data()
+    public function itCanReturnIndexPageData()
     {
         $userRepositoryMock = $this->createMock(UserRepository::class);
         $userService = new UserService($userRepositoryMock);
@@ -58,7 +58,7 @@ class UserServiceTest extends TestCase
     }
 
     /** @test */
-    public function it_can_edit_page_data()
+    public function itCanEditPageData()
     {
         $userRepositoryMock = $this->createMock(UserRepository::class);
         $userService = new UserService($userRepositoryMock);
@@ -70,7 +70,7 @@ class UserServiceTest extends TestCase
     }
 
     /** @test */
-    public function it_throws_exception_when_deleting_not_deletable_user()
+    public function itThrowsExceptionWhenDeletingNotDeletableUser()
     {
         $this->expectException(NotDeletableException::class);
         $userRepositoryMock = $this->createMock(UserRepository::class);
@@ -80,7 +80,7 @@ class UserServiceTest extends TestCase
     }
 
     /** @test */
-    public function it_can_find_user_by_email()
+    public function itCanFindUserByEmail()
     {
         $userRepositoryMock = $this->createMock(UserRepository::class);
         $userService = new UserService($userRepositoryMock);
