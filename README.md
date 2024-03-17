@@ -14,8 +14,8 @@ This structure is designed to segregate different components of the system, such
 - clone repo from https://github.com/rabigorkhali/proshore-assignment.git
 
 # STEP2
--make .env file. copy it from .env.example and make necessary changes like (app_url, database configs,etc)
--for email to work please put valid mail config
+-make .env file. copy it from .env.example and make necessary changes like (app_url, database configs,etc)<br>
+<h3> for email to work please put valid mail config </h3>
 
 # STEP3
 
