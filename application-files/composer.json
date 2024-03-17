@@ -47,6 +47,10 @@
         },
         "files": [
             "app/Helper/globalHelper.php"
+        ],
+        "exclude-from-classmap": [
+            "tests/",
+            "app/Http/Requests/System/"
         ]
     },
     "autoload-dev": {
