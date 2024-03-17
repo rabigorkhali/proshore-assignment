@@ -9,6 +9,7 @@ $homeBaseUrl = '/home';
 $userBaseUrl = '/users';
 $configBaseUrl = '/configs';
 $profileBaseUrl = '/profile';
+$questionnaireBaseUrl = '/questionnaires';
 
 return [
     'modules' => [
@@ -17,6 +18,55 @@ return [
             'icon' => "<i class='fa fa-home'></i>",
             'hasSubmodules' => false,
             'route' => $homeBaseUrl,
+        ],
+        [
+            'name' => 'Questionnaire Management',
+            'icon' => "<i class='fa fa-book'></i>",
+            'hasSubmodules' => false,
+            'route' => $questionnaireBaseUrl,
+            'permissions' => [
+                [
+                    'name' => 'View Questionnaire',
+                    'route' => [
+                        'url' => $questionnaireBaseUrl,
+                        'method' => $getMethod,
+                    ],
+                ],
+                [
+                    'name' => 'Create Questionnaire',
+                    'route' => [
+                        [
+                            'url' => $questionnaireBaseUrl . '/create',
+                            'method' => $getMethod,
+                        ],
+                        [
+                            'url' => $questionnaireBaseUrl,
+                            'method' => $postMethod,
+                        ],
+
+                    ],
+                ],
+                [
+                    'name' => 'Edit Questionnaire',
+                    'route' => [
+                        [
+                            'url' => $questionnaireBaseUrl . '/*/edit',
+                            'method' => $getMethod,
+                        ],
+                        [
+                            'url' => $questionnaireBaseUrl . '/*',
+                            'method' => $putMethod,
+                        ],
+                    ],
+                ],
+                [
+                    'name' => 'Delete Questionnaire',
+                    'route' => [
+                        'url' => $questionnaireBaseUrl . '/*',
+                        'method' => $deleteMethod,
+                    ],
+                ],
+            ],
         ],
 
         [

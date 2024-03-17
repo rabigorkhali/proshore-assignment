@@ -14,21 +14,8 @@ function authUser($gaurds = "web")
 function getCmsConfig($label)
 {
     $value = '';
-    if ($label == 'cms title') {
-        $con = 'title';
-    } elseif ($label == 'cms logo') {
-        $con = 'logo';
-    } elseif ($label == 'cms theme color') {
-        $con = 'color';
-    }
-
-    $data = Cookie::get($con);
-    if (isset($data) || $data !== null) {
-        $value = $data;
-    } else {
-        $data = conf::where('label', $label)->first()?->value;
-        $value = $data;
-    }
+    $data = conf::where('label', $label)->first()?->value;
+    $value = $data;
 
     return $value;
 }
@@ -62,5 +49,3 @@ function getSystemPrefix()
 {
     return config('constants.PREFIX');
 }
-
-

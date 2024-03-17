@@ -34,7 +34,6 @@ class UserService extends Service
                 event(new UserCreated($user));
                 return $user;
             } catch (\Exception $e) {
-                dd($e->getMessage());
                 \DB::rollBack();
                 return throw new CustomGenericException('User creation failed. Please try again.');
             }

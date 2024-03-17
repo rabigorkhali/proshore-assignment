@@ -32,7 +32,7 @@ class Repository implements OpenInterface
         }
 
         if (isset($data->keyword) && $data->keyword !== null) {
-            $query->where('name', 'LIKE', '%' . $data->keyword . '%');
+            $query->where('title', 'LIKE', '%' . $data->keyword . '%');
         }
         if ($pagination) {
             return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
