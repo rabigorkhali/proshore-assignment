@@ -39,7 +39,7 @@ class QuestionnaireService extends Service
             $emailData['email_subject'] = 'Examination Link';
             $emailData['email'] = $studentData->email;
             $emailData['studentName'] = $studentData->name;
-            $emailData['examLink'] = url($questionnaireId . '/123123');
+            $emailData['examLink'] = route('show.exam.form',[$questionnaireId , $studentData->id]);
             $emailData['questionnaireTitle'] = $questionnaireData->title;
             $emailData['expiryDate'] = $questionnaireData->expiry_date;
             $this->emailService->sendEmail($emailData);

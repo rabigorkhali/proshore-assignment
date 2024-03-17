@@ -35,7 +35,7 @@ Route::group(['prefix' => getSystemPrefix()], function () {
         /* End Profile Routes */
 
         Route::group(['prefix' => 'questionnaires'], function () {
-            Route::resource('/questionnaires', QuestionnairesController::class)->except(['show']);
+            Route::resource('/', QuestionnairesController::class)->except(['show']);
             Route::post('/mail-to-students/{questionnaireId}', [QuestionnairesController::class, 'sendExaminationLinkToStudents'])->name('questionnaires.mail.student');
         });
 
