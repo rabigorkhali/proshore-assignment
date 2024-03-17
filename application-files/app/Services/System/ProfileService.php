@@ -3,16 +3,9 @@
 namespace App\Services\System;
 
 use App\Exceptions\CustomGenericException;
-use App\Exceptions\UnauthorizedException;
-use App\Http\Requests\system\profileChangePasswordRequest;
-use App\Mail\system\PasswordResetEmail;
-use App\Mail\system\ProfileUpdateEmail;
 use App\Repositories\System\UserRepository;
 use App\Services\Service;
-use App\Traits\ImageTrait;
-use App\User;
 use Exception;
-use Illuminate\Support\Facades\Hash;
 
 
 class ProfileService extends Service
