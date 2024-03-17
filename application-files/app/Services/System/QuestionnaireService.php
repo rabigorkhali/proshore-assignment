@@ -45,10 +45,4 @@ class QuestionnaireService extends Service
             $this->emailService->sendEmail($emailData);
         }
     }
-
-    public function generateUniqueLink($questionnaireId, $studentId)
-    {
-
-        return url($questionnaireId . '/' . $studentId);
-    }
 }

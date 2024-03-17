@@ -25,7 +25,7 @@ class ConfigRepository extends Repository implements ConfigRepositoryInterface
       $query->select($selectedColumns);
     }
     if ($pagination) {
-      return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
+      return $query->orderBy('id', 'ASC')->paginate(paginate());
     }
 
     return $query->orderBy('id', 'ASC')->get();

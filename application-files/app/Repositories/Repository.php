@@ -35,7 +35,7 @@ class Repository implements OpenInterface
             $query->where('title', 'LIKE', '%' . $data->keyword . '%');
         }
         if ($pagination) {
-            return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
+            return $query->orderBy('id', 'DESC')->paginate(paginate());
         } else {
             return $query->orderBy('id', 'DESC')->get();
         }

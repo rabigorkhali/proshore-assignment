@@ -24,7 +24,7 @@ class QuestionnaireRepository extends Repository
         }
         $query->wheredate('expiry_date', '>', date('Y-m-d'));
         if ($pagination) {
-            return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
+            return $query->orderBy('id', 'DESC')->paginate(paginate());
         } else {
             return $query->orderBy('id', 'DESC')->get();
         }

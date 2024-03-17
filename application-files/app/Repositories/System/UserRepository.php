@@ -32,7 +32,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
         }
 
         if ($pagination) {
-            return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
+            return $query->orderBy('id', 'DESC')->paginate(paginate());
         }
 
         return $query->orderBy('id', 'DESC')->get();

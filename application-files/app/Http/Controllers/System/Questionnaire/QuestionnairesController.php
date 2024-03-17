@@ -34,7 +34,6 @@ class QuestionnairesController extends ResourceController
             $this->service->sendExaminationLinkToStudents($questionnaireId);
             return redirect($this->getUrl())->withErrors(['success' => 'Email sent successfully.']);
         } catch (Throwable $throwableCatch) {
-            dd($throwableCatch);
             return redirect()->back()->withErrors(['alert-danger' => 'Something went wrong.']);
         }
     }

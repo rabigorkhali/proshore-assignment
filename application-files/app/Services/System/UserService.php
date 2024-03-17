@@ -26,18 +26,18 @@ class UserService extends Service
 
     public function store($request)
     {
-        \DB::transaction(function () use ($request) {
-            $data = $request->except('_token');
-            $data['password'] = Hash::make($data['password']);
-            $user = $this->repository->create($data);
-            try {
-                event(new UserCreated($user));
-                return $user;
-            } catch (\Exception $e) {
-                \DB::rollBack();
-                return throw new CustomGenericException('User creation failed. Please try again.');
-            }
-        });
+        $data = $request->except('_token');
+        $data['password'] = Hash::make($data['password']);
+        DB::beginTransaction();
+        $user = $this->repository->create($data);
+        try {
+            DB::commit();
+            event(new UserCreated($user));
+            return $user;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return throw new CustomGenericException('User creation failed. Please try again.');
+        }
     }
 
     public function editPageData($request, $id)

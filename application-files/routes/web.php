@@ -13,7 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-define('PREFIX', Config::get('constants.PREFIX'));
-define('PAGINATE', 20);
 include 'backend.php';
 
