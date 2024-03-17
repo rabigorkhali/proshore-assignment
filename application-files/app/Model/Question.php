@@ -14,6 +14,6 @@ class Question extends Model
 
     public function questionnaires()
     {
-        return $this->belongsToMany(Questionnaire::class, 'pivot_questionnaire_questions', 'question_id', 'questionnnaire_id');
+        return $this->belongsToMany(Questionnaire::class, 'pivot_questionnaire_questions', 'question_id', 'questionnaire_id');
     }
 }

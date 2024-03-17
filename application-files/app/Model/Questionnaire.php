@@ -18,17 +18,17 @@ class Questionnaire extends Model
 
     public function questions()
     {
-        return $this->belongsToMany(Question::class, 'pivot_questionnaire_questions', 'questionnnaire_id', 'question_id');
+        return $this->belongsToMany(Question::class, 'pivot_questionnaire_questions', 'questionnaire_id', 'question_id');
     }
 
     public function physicsQuestions()
     {
-        return $this->belongsToMany(Question::class, 'pivot_questionnaire_questions', 'questionnnaire_id', 'question_id')
+        return $this->belongsToMany(Question::class, 'pivot_questionnaire_questions', 'questionnaire_id', 'question_id')
             ->where('subject', 'Physics');
     }
     public function chemistryQuestions()
     {
-        return $this->belongsToMany(Question::class, 'pivot_questionnaire_questions', 'questionnnaire_id', 'question_id')
+        return $this->belongsToMany(Question::class, 'pivot_questionnaire_questions', 'questionnaire_id', 'question_id')
             ->where('subject', 'Chemistry');
     }
 }

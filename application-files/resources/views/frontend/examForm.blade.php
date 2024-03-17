@@ -1,12 +1,12 @@
 @extends('frontend.main')
 @section('form')
-    <form action="">
+    <form method="post" action="{{ route('save.exam.form') }}">
         @csrf
+        <input type="hidden" value="{{$questionnaires->id}}" name="questionnaire">
+        <input type="hidden" value="{{$student->id}}" name="student">
         <div class="modal-body message-body">
-
             <div class="container">
                 <h1 class="text-center">{{ $questionnaires->title }} </h1>
-
                 <label>Student Name: {{ $student->name }} </label><br>
                 <label>Student Email: {{ $student->email }} </label>
                 <label class="pull-right">Expiry Date: {{ $questionnaires->expiry_date }} </label>
@@ -23,7 +23,8 @@
                                 @endphp
                                 @foreach (json_decode($questionData->options, true) as $questionOptionKey => $questionOptionData)
                                     <li class="list-group-item">
-                                        <input type="radio" name="{{$questionsKey}}Physics"> {{listFormatting($optionIncrement) . $questionOptionData[$optionIncrement] }}
+                                        <input type="radio" value="{{$optionIncrement}}" name="{{ $questionData->id }}">
+                                        {{ listFormatting($optionIncrement) . $questionOptionData[$optionIncrement] }}
                                     </li>
                                     @php
                                         $optionIncrement = chr(ord($optionIncrement) + 1);
@@ -50,7 +51,8 @@
                                 @endphp
                                 @foreach (json_decode($questionData->options, true) as $questionOptionJey => $questionOptionData)
                                     <li class="list-group-item">
-                                        <input type="radio" name="{{$questionsKey}}Chemistry">   {{ listFormatting($optionIncrement) . $questionOptionData[$optionIncrement] }}
+                                        <input value="{{$optionIncrement}}" type="radio" name="{{ $questionData->id }}">
+                                        {{ listFormatting($optionIncrement) . $questionOptionData[$optionIncrement] }}
                                     </li>
                                     @php
                                         $optionIncrement = chr(ord($optionIncrement) + 1);
@@ -62,5 +64,6 @@
                 @endforeach
             </div>
         </div>
+        <button type="submit" class="btn btn-sm btn-info">Submit</button>
     </form>
 @endsection
