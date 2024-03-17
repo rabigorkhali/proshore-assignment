@@ -19,13 +19,14 @@ This structure is designed to segregate different components of the system, such
 
 # STEP3
 Hit following command at --- cd application-files/
+```bash
  `composer install`
  `php artisan key:generate`
  `php artisan migrate`
  `php artisan db:seed`
  `npm install` 
  `npm run dev`<!-- hit this command if css breaks, however compilled css and js files are already pushed -->
-
+</p>
 ## STEP 4
 Now run the application via serve or by going to project url (localhost/proshore-assignment/public)
 `php artisan serve`
