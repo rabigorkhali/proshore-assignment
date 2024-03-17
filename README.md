@@ -13,4 +13,8 @@ STEP2
 -for email to work please put valid mail config
 
 STEP2
-Hit command `composer install`
+Hit following command at --- cd application-files/
+ `composer install`
+ `php artisan key:generate`
+ `php artisan migrate`
+ `php artisan db:seed`

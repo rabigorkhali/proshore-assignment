@@ -88,7 +88,7 @@ class LoginController extends Controller
             if (authUser() != null) {
                 $this->guard()->logout();
             }
-            throw new CustomGenericException('Internal server error.');
+            throw new CustomGenericException('Invalid Credentials. Please contact support team.');
         }
     }
 
