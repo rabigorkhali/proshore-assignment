@@ -3,7 +3,7 @@
 
 ## File Structure
 
-This project follows the Laravel folder structure. Here's a breakdown of the main directories:
+Here's a breakdown of the main directories:
 
 - **application-file:** This directory mirrors the Laravel folder structure. You should execute all commands related to the application (except Git commands) within this folder.
 
