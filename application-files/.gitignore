@@ -1,19 +1,41 @@
-/.phpunit.cache
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
+# Ignore vendor directory
 /vendor
+
+# Ignore node_modules directory
+/node_modules
+
+# Ignore the .env file
 .env
-.env.backup
-.env.production
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
-/.fleet
-/.idea
-/.vscode
+
+# Ignore compiled application and package files
+/bootstrap/cache
+/public/storage
+/public/uploads
+/public/compiledCssAndJs
+node_modules
+
+
+# Ignore Mac system files
+.DS_Store
+
+# Ignore configuration files that may contain sensitive information
+
+# Ignore PHPStorm project settings
+.idea/*
+.idea
+
+# Ignore Log files and databases
+/storage/*.log
+/storage/*.sql
+/storage/*.sqlite
+/storage/api-docs/*
+
+# Ignore Mix files
+/mix-manifest.json
+/public/hot
+/public/mix
+
+# Ignore Laravel Dusk Screenshots
+/tests/Browser/screenshots
+
+# Ignore Laravel

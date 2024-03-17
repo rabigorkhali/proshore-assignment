@@ -1,0 +1,99 @@
+.bootstrap-tagsinput{
+  display: block !important;
+}
+
+
+.buttons_inner {
+  padding: 10px 10px 10px 16px;
+  background-color: #F8F8F8;
+  margin-right: 5px;
+  border-radius: 4px;
+  width: 137px;
+  max-width: 185px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buttons_inner p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #717A81;
+  margin-bottom: 0 !important;
+}
+
+.buttons_inner span {
+  position: relative;
+  top: -7px;
+  right: -4px;
+  background: #278000;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  padding: 2px 8px;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.rejected_num span {
+  background-color: #ED0003 !important;
+}
+
+.proceed_num span {
+  background-color: #ED8B00 !important;
+}
+
+.buttons_inner.active {
+  background-color: #257474;
+  color: #FFFFFF;
+}
+
+.buttons_inner.active p {
+  color: #FFFFFF;
+  font-size: 700;
+}
+
+.buttons_inner.active span {
+  background: #FFFFFF !important;
+  color: #257474;
+}
+
+.buttons_inner:focus {
+  outline: none !important;
+}
+
+.proceed_num span {
+  background-color: #ED8B00 !important;
+}
+
+.warning_num span {
+  background-color: #a3d720 !important;
+}
+
+.secondary_num span {
+  background-color: #2462d4 !important;
+}
+
+.primary_num span {
+  background-color: #db758a !important;
+}
+
+.ternary_num span {
+  background-color: #dc19a5 !important;
+}
+
+.summary_view_details {
+  background-color: #1d97ff !important;
+  border-color: #1d97ff !important;
+  color: #fff;
+  border-radius: 4px; /* border-radius-4 */
+  align-items: center; /* align-center */
+  justify-content: space-between; /* justify-content-between */
+  padding: 25px; /* p-4 */
+  max-width: 400px; /* mw-200 */
+  white-space: nowrap; /* text-nowrap */
+  font-weight: 500;
+}
+
