@@ -15,7 +15,8 @@ This structure is designed to segregate different components of the system, such
 
 # STEP2
 -make .env file. copy it from .env.example and make necessary changes like (app_url, database configs,etc)<br>
-<h3> for email to work please put valid mail config </h3>
+### Imp
+-for email to work please put valid mail config.
 
 # STEP3
 
