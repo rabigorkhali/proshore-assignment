@@ -28,15 +28,17 @@ Route::group(['prefix' => getSystemPrefix()], function () {
         /* Profile Routes*/
         Route::group(['prefix' => 'profile'], function () {
             Route::get('/', [ProfileController::class, 'index'])->name('profile');
-            Route::put('/{id}', [ProfileController::class, 'update']);
+            Route::put('/{id}', [ProfileController::class, 'update'])->name('profile.update');
             Route::get('/change-password', [PasswordChangeController::class, 'index'])->name('profile.change-password-form');
             Route::put('/change-password/{id}', [PasswordChangeController::class, 'update'])->name('profile.change-password');
         });
         /* End Profile Routes */
 
-        Route::resource('/questionnaires', QuestionnairesController::class)->except(['show']);
-        Route::post('/questionnaires/mail-to-students/{questionnaireId}', [QuestionnairesController::class,'sendExaminationLinkToStudents'])->name('questionnaires.mail.student');
-        Route::resource('/configs', ConfigController::class)->except(['show']);
+        Route::group(['prefix' => 'questionnaires'], function () {
+            Route::resource('/questionnaires', QuestionnairesController::class)->except(['show']);
+            Route::post('/mail-to-students/{questionnaireId}', [QuestionnairesController::class, 'sendExaminationLinkToStudents'])->name('questionnaires.mail.student');
+        });
 
+        Route::resource('/configs', ConfigController::class)->except(['show']);
     });
 });
