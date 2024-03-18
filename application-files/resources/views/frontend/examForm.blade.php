@@ -23,7 +23,7 @@
                                 @endphp
                                 @foreach (json_decode($questionData->options, true) as $questionOptionKey => $questionOptionData)
                                     <li class="list-group-item">
-                                        <input @if($questionOptionKey<1) required @endif type="radio" value="{{$optionIncrement}}" name="{{ $questionData->id }}">
+                                        <input @if($questionsKey<1) required @endif type="radio" value="{{$optionIncrement}}" name="{{ $questionData->id }}">
                                         {{ listFormatting($optionIncrement) . $questionOptionData[$optionIncrement] }}
                                     </li>
                                     @php
