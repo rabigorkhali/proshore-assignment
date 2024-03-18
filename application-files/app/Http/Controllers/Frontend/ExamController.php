@@ -42,11 +42,11 @@ class ExamController extends Controller
             $studentId = request()->get('student');
             $ifAlreadySubmitted = $this->pivotQuestionnaireStudentQuestionsModel->where('questionnaire_id', $questionnaireId)->where('student_id', $studentId)->first();
             if ($ifAlreadySubmitted) {
-                return redirect()->route('error.page.frontend')->withErrors(['alert-danger' => 'Exam already submitted.']);
+                return redirect()->route('error.page.frontend')->withErrors(['alert-success' => 'Exam already submitted.']);
             }
             $formattedExamData = $this->parseDataForExamDataSave(request()->except('_token', 'questionnaire', 'student'));
             $this->pivotQuestionnaireStudentQuestionsModel->insert($formattedExamData);
-            dd('Your answer sheet have been submitted successfully.');
+            return redirect()->route('error.page.frontend')->withErrors(['alert-success' => 'Your answer sheet have been submitted successfully.']);
         } catch (Throwable $th) {
             return redirect()->route('error.page.frontend')->withErrors(['alert-danger' => 'Something went wrong. Please contact support team.']);
         }
