@@ -4,13 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <link href="{{ asset('images/eklogo.png') }}" rel="shortcut icon">
+    <link href="{{ asset('images/logo.png') }}" rel="shortcut icon">
     <meta name="theme-color" content="#ffffff">
     <meta name="csrf" content="{{ csrf_token() }}">
 
     <title>{{ ($title) ?? 'Exam Academy' }}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"rel="stylesheet"/>
-    <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
     <link href="{{ asset('compiledCssAndJs/css/system.css')}}" rel="stylesheet" media="screen"> 
     <link href="{{ asset('toast/jquery.toast.min.css') }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">

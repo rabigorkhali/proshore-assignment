@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('system.layouts.layoutHeader')
+@include('frontend.layouts.layoutHeader')
 
 <body>
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
