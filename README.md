@@ -1,6 +1,13 @@
 # Proshore Assignment Readme
 # Author: Rabi Gorkhali
 
+## Prerequisites
+<p>
+PHP: >8.1
+MySQL:  5.7
+Composer: 2.3 above
+npm: 8.19
+</p>
 ## File Structure
 
 Here's a breakdown of the main directories:
