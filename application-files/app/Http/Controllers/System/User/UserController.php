@@ -4,6 +4,7 @@ namespace App\Http\Controllers\System\User;
 
 use App\Http\Controllers\System\ResourceController;
 use App\Http\Requests\system\resetPassword;
+use App\Services\ConstantMessageService;
 use App\Services\System\UserService;
 
 class UserController extends ResourceController
@@ -40,7 +41,7 @@ class UserController extends ResourceController
     {
         $this->service->resetPassword($request);
 
-        return redirect($this->getUrl())->withErrors(['success' => 'Password successfully updated.']);
+        return redirect($this->getUrl())->withErrors(['success' => ConstantMessageService::PASSWORDCHANGED]);
     }
 }
 

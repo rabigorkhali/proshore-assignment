@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
+use App\Services\ConstantMessageService;
 use Illuminate\Http\Request;
 use Throwable;
 use DB;
@@ -242,10 +243,10 @@ class ResourceController extends Controller
             $this->service->store($request);
             $this->setModuleId($request->id);
             DB::commit();
-            return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
+            return redirect($this->getUrl())->withErrors(['success' => ConstantMessageService::PASSWORDCHANGED]);
         } catch (Throwable $throwableCatch) {
             DB::rollback();
-            return redirect()->back()->withErrors(['alert-danger' => 'Something went wrong.']);
+            return redirect()->back()->withErrors(['alert-danger' => ConstantMessageService::SOMETHINGWENTWRONG]);
         }
     }
 
@@ -266,7 +267,7 @@ class ResourceController extends Controller
             return $this->renderView('form', $data);
         } catch (Throwable $throwableCatch) {
             DB::rollback();
-            return redirect()->back()->withErrors(['alert-danger' => 'Something went wrong.']);
+            return redirect()->back()->withErrors(['alert-danger' => ConstantMessageService::SOMETHINGWENTWRONG]);
         }
     }
 
@@ -292,7 +293,7 @@ class ResourceController extends Controller
             return redirect($this->getUrl())->withErrors(['success' => 'Successfully updated.']);
         } catch (Throwable $throwableCatch) {
             DB::rollback();
-            return redirect()->back()->withErrors(['alert-danger' => 'Something went wrong.']);
+            return redirect()->back()->withErrors(['alert-danger' => ConstantMessageService::SOMETHINGWENTWRONG]);
         }
     }
 
@@ -310,7 +311,7 @@ class ResourceController extends Controller
             return redirect($this->getUrl())->withErrors(['success' => 'Successfully deleted.']);
         } catch (Throwable $throwableCatch) {
             DB::rollback();
-            return redirect()->back()->withErrors(['alert-danger' => 'Something went wrong.']);
+            return redirect()->back()->withErrors(['alert-danger' => ConstantMessageService::SOMETHINGWENTWRONG]);
         }
     }
 }

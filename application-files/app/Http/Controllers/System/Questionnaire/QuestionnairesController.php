@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\System\Questionnaire;
 
 use App\Http\Controllers\System\ResourceController;
+use App\Services\ConstantMessageService;
 use App\Services\System\QuestionnaireService;
 use Throwable;
 
@@ -32,9 +33,9 @@ class QuestionnairesController extends ResourceController
     {
         try {
             $this->service->sendExaminationLinkToStudents($questionnaireId);
-            return redirect($this->getUrl())->withErrors(['success' => 'Email sent successfully.']);
+            return redirect($this->getUrl())->withErrors(['success' => ConstantMessageService::EMAILSENT]);
         } catch (Throwable $throwableCatch) {
-            return redirect()->back()->withErrors(['alert-danger' => 'Invalid email config setup or something went wrong.']);
+            return redirect()->back()->withErrors(['alert-danger' => ConstantMessageService::INVALIDEMAILCONFIG]);
         }
     }
 }
